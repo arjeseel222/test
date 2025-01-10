@@ -13,7 +13,7 @@ const PaymentPage = () => {
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
-  const totalAmount = selectedSeats.length * 10;
+  const totalAmount = selectedSeats.length * 50;
 
   const handlePaymentClick = () => {
     console.log('Opening modal');
