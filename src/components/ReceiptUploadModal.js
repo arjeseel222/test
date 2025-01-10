@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Dialog,
   DialogContent,
@@ -20,6 +20,22 @@ const ReceiptUploadModal = ({ isOpen, onClose, onSubmit, totalAmount, selectedSe
   const [previewUrl, setPreviewUrl] = useState('');
   const [error, setError] = useState('');
   
+  useEffect(() => {
+    if (!isOpen) {
+      setStudentNumber('');
+      setReceipt(null);
+      setPreviewUrl('');
+      setError('');
+    }
+  }, [isOpen]);
+
+  if (!isOpen) return null;
+
+  const handleOverlayClick = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -58,12 +74,13 @@ const ReceiptUploadModal = ({ isOpen, onClose, onSubmit, totalAmount, selectedSe
   };
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-    <DialogOverlay className="bg-black/50 backdrop-blur-sm" />
-    <DialogContent className="dialog-content">
-      <DialogHeader className="dialog-header">
-        <DialogTitle className="dialog-title">Payment Details</DialogTitle>
-      </DialogHeader>
+    <>
+    <div className="dialog-overlay" onClick={onClose} />
+    <div className="modal-container">
+      <div className="dialog-content">
+        <div className="dialog-header">
+          <h2 className="dialog-title">Payment Details</h2>
+        </div>
 
         <div className="booking-summary">
           <h2>Booking Summary</h2>
@@ -79,8 +96,8 @@ const ReceiptUploadModal = ({ isOpen, onClose, onSubmit, totalAmount, selectedSe
 
         <form onSubmit={handleSubmit}>
           <div className="input-container">
-            <Label htmlFor="studentNumber">Student Number</Label>
-            <Input
+            <label htmlFor="studentNumber">Student Number</label>
+            <input
               id="studentNumber"
               placeholder="022XXXXXXXXX"
               value={studentNumber}
@@ -90,7 +107,7 @@ const ReceiptUploadModal = ({ isOpen, onClose, onSubmit, totalAmount, selectedSe
           </div>
 
           <div className="input-container">
-            <Label>Payment Receipt</Label>
+            <label>Payment Receipt</label>
             <div className="upload-container">
               <label className="flex flex-col items-center justify-center w-full cursor-pointer">
                 <Upload className="w-8 h-8 mb-4 text-gray-500" />
@@ -107,7 +124,7 @@ const ReceiptUploadModal = ({ isOpen, onClose, onSubmit, totalAmount, selectedSe
                     className="mt-4 max-h-32 object-contain"
                   />
                 )}
-                <Input
+                <input
                   id="receipt"
                   type="file"
                   className="hidden"
@@ -124,32 +141,32 @@ const ReceiptUploadModal = ({ isOpen, onClose, onSubmit, totalAmount, selectedSe
           </div>
 
           {error && (
-            <Alert variant="destructive" className="mt-4">
+            <div className="error-alert">
               <AlertCircle className="h-4 w-4" />
-              <AlertDescription>{error}</AlertDescription>
-            </Alert>
+              <p>{error}</p>
+            </div>
           )}
 
-          <DialogFooter className="footer">
-            <Button 
+          <div className="footer">
+            <button 
               type="button" 
-              variant="outline"
               onClick={onClose}
               className="button button-outline"
             >
               Cancel
-            </Button>
-            <Button 
+            </button>
+            <button 
               type="submit"
               className="button button-primary"
             >
               Confirm Payment
-            </Button>
-          </DialogFooter>
+            </button>
+          </div>
         </form>
-      </DialogContent>
-    </Dialog>
-  );
+      </div>
+    </div>
+  </>
+);
 };
 
 export default ReceiptUploadModal;
