@@ -21,7 +21,7 @@ const MovieSeatSelector = () => {
   const rowLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T'];
   const [selectedSeats, setSelectedSeats] = useState([]);
   const maxSeats = 5;
-  const seatPrice = 10;
+  const seatPrice = 50;
   const navigate = useNavigate();
 
   const handleSeatClick = (rowIndex, colIndex) => {
