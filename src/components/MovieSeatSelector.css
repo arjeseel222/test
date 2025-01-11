@@ -149,7 +149,10 @@ h1 {
 
 @media (max-width: 768px) {
   .seat-selector {
-    padding: 10px 0;
+    transform-origin: top left;
+    zoom: 0.8;
+    -moz-transform: scale(0.8);
+    padding: 10px;
   }
 
   .seats {
