@@ -7,8 +7,6 @@
   font-family: Arial, sans-serif;
   width: 100%;
   min-width: 100vw;
-  overflow-x: scroll;
-  -webkit-overflow-scrolling: touch;
   position: relative;
   padding: 20px 0;
   overflow: hidden;
@@ -30,7 +28,7 @@ h1 {
   flex-direction: column;
   gap: 10px;
   width: max-content;
- overflow-x: scroll;
+  overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
   padding-bottom: 15px; /* Space for scrollbar */
 }
