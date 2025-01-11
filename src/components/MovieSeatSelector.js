@@ -24,7 +24,7 @@ const MovieSeatSelector = () => {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const maxSeats = 5;
+  const maxSeats = 15;
   const seatPrice = 50;
   const navigate = useNavigate();
 
