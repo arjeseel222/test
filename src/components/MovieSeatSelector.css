@@ -6,6 +6,8 @@
   align-items: center;
   font-family: Arial, sans-serif;
   width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   padding: 20px 0;
 }
 
@@ -27,8 +29,6 @@ h1 {
   width: max-content;
   min-width: min-content;
   padding: 0 20px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
 }
 
 .seat-row {
@@ -37,6 +37,7 @@ h1 {
   align-items: center;
   width: max-content;
   gap: 10px;
+  padding: 0 10px;
 }
 
 .row-label {
@@ -147,21 +148,19 @@ h1 {
 
 @media (max-width: 768px) {
   .seat-selector {
-    padding: 10px 0;
-    width: 100vw;
-    max-width: none;
-    transform: scale(0.7);
-    transform-origin: top left;
+    padding: 10px;
+    width: 100%;
+    overflow-x: scroll;
   }
 
   .seats {
-    width: 142.85vw; /* 100/0.7 to compensate for scale */
-    margin-left: -10px;
+    width: max-content;
+    min-width: 1000px; /* Force minimum width to ensure scrolling */
   }
 
   .row-label {
-    width: 20px;
-    font-size: 14px;
+    min-width: 30px;
+    margin-right: 10px;
   }
 
   .seat-row {
