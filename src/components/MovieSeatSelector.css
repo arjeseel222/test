@@ -152,7 +152,9 @@ h1 {
 
 @media (max-width: 768px) {
   .seat-selector {
-    padding: 10px 0;
+    padding: 10px;
+    width: 100%;
+    overflow-x: scroll;
   }
 
   .seats {
