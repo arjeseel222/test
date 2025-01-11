@@ -6,9 +6,6 @@
   align-items: center;
   font-family: Arial, sans-serif;
   width: 100%;
-  max-width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
   padding: 20px 0;
 }
 
@@ -31,16 +28,15 @@ h1 {
   min-width: min-content;
   padding: 0 20px;
   overflow-x: auto;
-  margin: 0 -10px;
-  padding: 0 10px;
+  -webkit-overflow-scrolling: touch;
 }
 
 .seat-row {
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 10px;
   width: max-content;
-  padding: 0 20px;
+  gap: 10px;
 }
 
 .row-label {
@@ -151,16 +147,16 @@ h1 {
 
 @media (max-width: 768px) {
   .seat-selector {
-    transform: none;
-    zoom: 1;
-    width: 100%;
-    overflow-x: scroll;
-    -webkit-overflow-scrolling: touch;
+    padding: 10px 0;
+    width: 100vw;
+    max-width: none;
+    transform: scale(0.7);
+    transform-origin: top left;
   }
 
   .seats {
-    min-width: fit-content;
-    width: max-content;
+    width: 142.85vw; /* 100/0.7 to compensate for scale */
+    margin-left: -10px;
   }
 
   .row-label {
