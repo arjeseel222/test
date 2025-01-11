@@ -28,17 +28,15 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: max-content;
-  min-width: min-content;
-  padding: 0 20px;
+    min-width: min-content;
+  padding: 0 10px;
 }
 
 .seat-row {
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 5px;
-  width: max-content;
-  padding: 0 10px;
+  gap: 10px;
 }
 
 .row-label {
@@ -149,14 +147,13 @@ h1 {
 
 @media (max-width: 768px) {
   .seat-selector {
-    transform-origin: top left;
-    zoom: 0.8;
-    -moz-transform: scale(0.8);
-    padding: 10px;
+    padding: 10px 0;
   }
 
   .seats {
-    margin: 0 auto;
+    overflow-x: auto;
+    margin: 0 -10px;
+    padding: 0 10px;
   }
 
   .row-label {
@@ -177,11 +174,5 @@ h1 {
   .status {
     padding: 8px 12px;
     font-size: 14px;
-  }
-
-  .seat {
-    width: 30px;
-    height: 30px;
-    font-size: 12px;
   }
 }
