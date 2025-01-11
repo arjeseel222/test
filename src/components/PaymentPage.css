@@ -1,0 +1,132 @@
+.payment-page {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    background-color: #f4f4f4;
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  .payment-summary {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .payment-summary h2 {
+    font-size: 24px;
+  }
+  
+  .payment-method {
+    margin: 30px 0;
+  }
+  
+  .gcash-option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .gcash-logo {
+    width: 60px;
+    height: auto;
+    margin-right: 20px;
+  }
+  
+  .pay-btn {
+    background-color: #00A0E9;
+    color: white;
+    font-size: 18px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .pay-btn:hover {
+    background-color: #0085b3;
+  }
+  
+  .payment-instructions {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .payment-confirmation {
+    background-color: #d4edda;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+  
+  .payment-confirmation h2 {
+    color: #155724;
+  }
+  
+  .footer {
+    background-color: #fff;
+    padding: 10px;
+    margin-top: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .social-media {
+    margin-top: 2rem;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .social-media p {
+    margin-bottom: 1rem;
+    color: #666;
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .social-icons a {
+    color: #333;
+    font-size: 1.5rem;
+    transition: transform 0.2s;
+  }
+  
+  .social-icons a:hover {
+    transform: scale(1.2);
+  }
+  
+  .facebook:hover { color: #1877f2; }
+  .instagram:hover { color: #e4405f; }
+  .twitter:hover { color: #1da1f2; }
+
+  @media (max-width: 768px) {
+    .payment-page {
+      padding: 10px;
+      margin: 0;
+    }
+  
+    .gcash-option {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .gcash-logo {
+      width: 40px;
+    }
+  
+    .pay-btn {
+      width: 100%;
+      font-size: 16px;
+      padding: 12px 20px;
+    }
+  }

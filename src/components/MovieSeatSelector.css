@@ -1,0 +1,170 @@
+/* Basic Styles for the Seat Selector */
+
+.seat-selector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.screen {
+  font-size: 20px;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.seats {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.seat-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.row-label {
+  font-size: 18px;
+  font-weight: bold;
+  width: 30px;
+  text-align: center;
+}
+
+.seat {
+  width: 40px;
+  height: 40px;
+  background-color: #dcdcdc;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.seat.available {
+  background-color: #4CAF50;
+}
+
+.seat.selected {
+  background-color: #FF9800;
+}
+
+.seat.booked {
+  background-color: #f44336;
+  cursor: not-allowed;
+}
+
+.seat-status {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.status {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+.available {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.selected {
+  background-color: #FF9800;
+  color: white;
+}
+
+.booked {
+  background-color: #f44336;
+  color: white;
+}
+
+.total-price {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.checkout {
+  padding: 10px 20px;
+}
+
+.gap,
+.walkway {
+  background-color: transparent;  /* Transparent for gap and walkway */
+}
+
+.social-media {
+  margin-top: 2rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.social-media p {
+  margin-bottom: 1rem;
+  color: #666;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.social-icons a {
+  color: #333;
+  font-size: 1.5rem;
+  transition: transform 0.2s;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+}
+
+.facebook:hover { color: #1877f2; }
+.instagram:hover { color: #e4405f; }
+.twitter:hover { color: #1da1f2; }
+
+@media (max-width: 768px) {
+  .seat-selector {
+    padding: 10px;
+  }
+
+  .seat {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+
+  .row-label {
+    width: 20px;
+    font-size: 14px;
+  }
+
+  .seat-row {
+    gap: 5px;
+  }
+
+  .seat-status {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .status {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
