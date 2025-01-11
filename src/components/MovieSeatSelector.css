@@ -36,6 +36,7 @@ h1 {
 
 .seat-row {
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 10px;
   width: max-content; /* Allow row to expand */
