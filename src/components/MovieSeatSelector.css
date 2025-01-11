@@ -7,7 +7,6 @@
   font-family: Arial, sans-serif;
   width: 100%;
   padding: 20px 0;
-  overflow: hidden;
 }
 
 h1 {
@@ -25,17 +24,19 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: max-content;
   overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
   padding-bottom: 15px; /* Space for scrollbar */
+  scrollbar-width: thin;
 }
 
 .seat-row {
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 10px;
   width: max-content; /* Allow row to expand */
+  min-width: max-content;
   padding: 0 20px;
 }
 
@@ -147,14 +148,12 @@ h1 {
 
 @media (max-width: 768px) {
   .seat-selector {
-    width: 100%;
-    min-width: 100%;
+    padding: 10px 0;
   }
 
   .seats {
-    min-width: 35px;
-    width: 35px;
-    height: 35px;
+    min-width: 100%;
+    overflow-x: auto;
   }
 
   .row-label {
@@ -163,8 +162,7 @@ h1 {
   }
 
   .seat-row {
-    gap: 5px;
-    width: max-content;
+    padding: 0 10px;
   }
 
   .seat-status {
@@ -175,5 +173,11 @@ h1 {
   .status {
     padding: 8px 12px;
     font-size: 14px;
+  }
+
+  .seat {
+    min-width: 35px;
+    width: 35px;
+    height: 35px;
   }
 }
