@@ -6,10 +6,8 @@
   align-items: center;
   font-family: Arial, sans-serif;
   width: 100%;
-  max-width: 100vw;
-  overflow-x: scroll;
+  overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  position: relative;
   padding: 20px 0;
 }
 
@@ -39,6 +37,7 @@ h1 {
   align-items: center;
   width: max-content;
   gap: 10px;
+  padding: 0 10px;
 }
 
 .row-label {
@@ -149,21 +148,19 @@ h1 {
 
 @media (max-width: 768px) {
   .seat-selector {
-    transform-origin: top left;
-    zoom: 0.8;
-    -moz-transform: scale(0.8);
     padding: 10px;
+    width: 100%;
+    overflow-x: scroll;
   }
 
   .seats {
-    overflow-x: auto;
-    margin: 0 -10px;
-    padding: 0 10px;
+    width: max-content;
+    min-width: 1000px; /* Force minimum width to ensure scrolling */
   }
 
   .row-label {
-    width: 20px;
-    font-size: 14px;
+    min-width: 30px;
+    margin-right: 10px;
   }
 
   .seat-row {
