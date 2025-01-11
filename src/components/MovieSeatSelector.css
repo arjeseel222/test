@@ -28,14 +28,16 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 10px;
-    min-width: min-content;
-  padding: 0 10px;
+  width: max-content;
+  min-width: min-content;
+  padding: 0 20px;
 }
 
 .seat-row {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: max-content;
   gap: 10px;
 }
 
