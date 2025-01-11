@@ -28,14 +28,6 @@ const MovieSeatSelector = () => {
   const seatPrice = 50;
   const navigate = useNavigate();
 
-  useEffect(() => {
-    // Center the seats horizontally
-    const seatsContainer = document.querySelector('.seats');
-    if (seatsContainer) {
-      const scrollLeft = (seatsContainer.scrollWidth - seatsContainer.clientWidth) / 2;
-      seatsContainer.scrollLeft = scrollLeft;
-    }
-  }, []);
   
   // Calculate total price
   const totalPrice = selectedSeats.length * seatPrice;
