@@ -72,7 +72,7 @@ const MovieSeatSelector = () => {
             return prev;
           });
         } else {
-          alert("You can only select up to 5 seats.");
+          alert("You can only select up to 15 seats.");
           return prevSeats;
         }
       } else if (updatedSeats[rowIndex][colIndex] === "selected") {
