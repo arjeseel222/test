@@ -6,7 +6,12 @@
   align-items: center;
   font-family: Arial, sans-serif;
   width: 100%;
+  min-width: 100vw;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
   padding: 20px 0;
+  overflow: hidden;
 }
 
 h1 {
@@ -24,19 +29,17 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: max-content;
-  min-width: min-content;
-  padding: 0 20px;
-  overflow-x: auto;
+  overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
+  padding-bottom: 15px; /* Space for scrollbar */
 }
 
 .seat-row {
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: max-content;
   gap: 10px;
+  width: max-content; /* Allow row to expand */
+  padding: 0 20px;
 }
 
 .row-label {
@@ -148,15 +151,11 @@ h1 {
 @media (max-width: 768px) {
   .seat-selector {
     padding: 10px 0;
-    width: 100vw;
-    max-width: none;
-    transform: scale(0.7);
-    transform-origin: top left;
   }
 
   .seats {
-    width: 142.85vw; /* 100/0.7 to compensate for scale */
-    margin-left: -10px;
+    width: 100%;
+    min-width: 100%;
   }
 
   .row-label {
