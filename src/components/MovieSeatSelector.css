@@ -6,7 +6,12 @@
   align-items: center;
   font-family: Arial, sans-serif;
   width: 100%;
+  min-width: 100vw;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
   padding: 20px 0;
+  overflow: hidden;
 }
 
 h1 {
@@ -24,10 +29,9 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  overflow-x: scroll;
+ overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
   padding-bottom: 15px; /* Space for scrollbar */
-  scrollbar-width: thin;
 }
 
 .seat-row {
@@ -35,9 +39,6 @@ h1 {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  width: max-content; /* Allow row to expand */
-  min-width: max-content;
-  padding: 0 20px;
 }
 
 .row-label {
@@ -152,8 +153,9 @@ h1 {
   }
 
   .seats {
-    min-width: 100%;
     overflow-x: auto;
+    margin: 0 -10px;
+    padding: 0 10px;
   }
 
   .row-label {
@@ -162,7 +164,8 @@ h1 {
   }
 
   .seat-row {
-    padding: 0 10px;
+    gap: 5px;
+    width: max-content;
   }
 
   .seat-status {
@@ -173,11 +176,5 @@ h1 {
   .status {
     padding: 8px 12px;
     font-size: 14px;
-  }
-
-  .seat {
-    min-width: 35px;
-    width: 35px;
-    height: 35px;
   }
 }
