@@ -117,8 +117,8 @@ const PaymentPage = () => {
         <p>3. Enter the details provided below.</p>
         <p>4. Confirm your payment.</p>
         <p><strong>Amount: ₱{totalPrice}</strong></p>
-        <p><strong>Account Name: ED**N J* S</strong></p>
-        <p><strong>GCash Number: 0995 225 6413</strong></p>
+        <p><strong>Account Name: Alaina Marie D.</strong></p>
+        <p><strong>GCash Number: 0977 140 3317 </strong></p>
         <p>5. After payment, click the "Pay with GCash" button to upload your receipt.</p>
       </div>
 
