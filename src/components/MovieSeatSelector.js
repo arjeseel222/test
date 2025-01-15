@@ -24,7 +24,7 @@ const MovieSeatSelector = () => {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const maxSeats = 15;
+  const maxSeats = 5;
   const seatPrice = 50;
   const navigate = useNavigate();
 
@@ -72,7 +72,7 @@ const MovieSeatSelector = () => {
             return prev;
           });
         } else {
-          alert("You can only select up to 15 seats.");
+          alert("You can only select up to 5 seats.");
           return prevSeats;
         }
       } else if (updatedSeats[rowIndex][colIndex] === "selected") {
