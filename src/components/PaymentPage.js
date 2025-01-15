@@ -6,7 +6,7 @@ import './PaymentPage.css';
 import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
 import ReceiptUploadModal from './ReceiptUploadModal';
 
-const API_URL = process.env.REACT_APP_FIREBASE_DATABASE_URL || 'https://psychsoc-fcbae-default-rtdb.asia-southeast1.firebasedatabase.app';
+const API_URL = process.env.REACT_APP_FIREBASE_DATABASE_URL;
 
 const PaymentPage = () => {
   const location = useLocation();
