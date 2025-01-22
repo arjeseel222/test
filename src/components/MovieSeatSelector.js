@@ -215,6 +215,7 @@ const MovieSeatSelector = () => {
   return (
     <div className="seat-selector">
       <h1>Select Your Seats</h1>
+      <h2>ATTENTION: Mr. and Ms. Psychology has been moved from January 25 to February 5, 2025.</h2>
       <div className="screen">Stage</div>
       <div className="seats">
         {seats.map((row, rowIndex) => (
