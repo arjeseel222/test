@@ -117,8 +117,11 @@ const PaymentPage = () => {
         <p>3. Enter the details provided below.</p>
         <p>4. Confirm your payment.</p>
         <p><strong>Amount: ₱{totalPrice}</strong></p>
-        <p><strong>Account Name: Jasmine Cid</strong></p>
-        <p><strong>GCash Number: 0926 642 9873 </strong></p>
+        <p><strong>Account Name: Alaina Marie D. Luna</strong></p>
+        <p><strong>GCash Number: 0977 140 3317 </strong></p>
+        <p>If above doesn't work, try:</p>
+        <p><strong>Account Name: Jasmin Cid</strong></p>
+        <p><strong>GCash Number: 0926 642 9873  </strong></p>
         <p>5. After payment, click the "Pay with GCash" button to upload your receipt.</p>
       </div>
 
