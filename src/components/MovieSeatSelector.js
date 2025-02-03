@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { database } from '../firebase/firebase';
-import { ref, onValue, set, get } from 'firebase/database';
+import { ref, onValue, set, get, push } from 'firebase/database';
 import { X } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
 import './MovieSeatSelector.css';
 
 const MovieSeatSelector = () => {
-  // Constants and state declarations
   const rowLabels = ['0', ...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')];
   const initialSeats = [
     ["available", "available", "available", "available", "gap", "gap", "gap", "gap", "gap", "gap", "gap", "gap", "gap", "available", "available", "available", "available"],
@@ -24,15 +22,11 @@ const MovieSeatSelector = () => {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const maxSeats = 5;
+  const maxSeats = 15;
   const seatPrice = 50;
-  const navigate = useNavigate();
 
-  
-  // Calculate total price
   const totalPrice = selectedSeats.length * seatPrice;
 
-  // Helper Functions
   const isValidSeatData = (data) => {
     if (!Array.isArray(data)) return false;
     
@@ -51,7 +45,6 @@ const MovieSeatSelector = () => {
     return `Seat ${rowLabel}${seatNumber}`;
   };
 
-  // Event Handlers
   const handleSeatClick = (rowIndex, colIndex) => {
     const seatId = `${rowLabels[rowIndex]}${colIndex + 1}`;
 
@@ -89,72 +82,75 @@ const MovieSeatSelector = () => {
       alert("Please select at least one seat.");
       return;
     }
-  
+
     try {
       const seatsRef = ref(database, 'seats');
-      const snapshot = await get(seatsRef); 
-      
+      const snapshot = await get(seatsRef);
+
       if (!snapshot.exists()) {
         throw new Error("Seats data not found");
       }
-  
+
       const currentSeats = snapshot.val();
-      
-      // Verify selected seats are still available
+      const updatedSeats = JSON.parse(JSON.stringify(currentSeats)); // Deep copy
+
+      // Verify selected seats are still available and book them
       for (const seatId of selectedSeats) {
         const rowLetter = seatId[0];
         const colIndex = parseInt(seatId.slice(1)) - 1;
         const rowIndex = rowLabels.indexOf(rowLetter);
-        
-        if (rowIndex === -1 || !currentSeats[rowIndex]) {
+
+        if (rowIndex === -1 || !updatedSeats[rowIndex]) {
           throw new Error(`Invalid seat: ${seatId}`);
         }
-  
-        if (currentSeats[rowIndex][colIndex] !== "available" && 
-            currentSeats[rowIndex][colIndex] !== "selected") {
+
+        if (updatedSeats[rowIndex][colIndex] !== "available" && updatedSeats[rowIndex][colIndex] !== "selected") {
           alert("Some seats have been booked by another user. Please select different seats.");
           setSelectedSeats([]);
           return;
         }
+
+        updatedSeats[rowIndex][colIndex] = "booked"; // Book the seat
       }
-  
-      // Navigate to payment with the selected seats
-      navigate('/payment', { 
-        state: { 
-          selectedSeats: [...new Set(selectedSeats)],
-          totalPrice: selectedSeats.length * seatPrice,
-          currentSeats: currentSeats // Pass the current seat state to PaymentPage
-        }
+
+      // Save the updated seats data
+      await set(seatsRef, updatedSeats);
+
+      // Optionally, you can save the booking information in a separate node
+      const bookingsRef = ref(database, 'bookings');
+      const newBookingRef = push(bookingsRef);
+      await set(newBookingRef, {
+        seats: selectedSeats,
+        timestamp: Date.now(),
+        status: 'booked'
       });
+
+      alert("Booking successful! Your seats have been reserved.");
+      setSelectedSeats([]); // Clear selected seats after booking
+
     } catch (error) {
-      console.error("Error verifying seats:", error);
-      alert("There was an error verifying your seats. Please try again.");
+      console.error("Error confirming booking:", error);
+      alert("There was an error confirming your booking. Please try again.");
     }
   };
 
-  // Firebase initialization and real-time updates
   useEffect(() => {
     const seatsRef = ref(database, 'seats');
     
     const initializeSeats = async () => {
       try {
-        console.log('Fetching seats data...');
         const snapshot = await get(seatsRef);
         
         if (snapshot.exists()) {
           const data = snapshot.val();
-          console.log('Received data:', data);
           
           if (isValidSeatData(data)) {
-            console.log('Valid seat data received, updating state');
             setSeats(data);
           } else {
-            console.log('Invalid data format, reinitializing');
             await set(seatsRef, initialSeats);
             setSeats(initialSeats);
           }
         } else {
-          console.log('No existing data, initializing with default seats');
           await set(seatsRef, initialSeats);
           setSeats(initialSeats);
         }
@@ -187,7 +183,6 @@ const MovieSeatSelector = () => {
     return () => unsubscribe();
   }, []);
 
-  // Render loading and error states
   if (isLoading) {
     return (
       <div className="loading">
@@ -211,8 +206,7 @@ const MovieSeatSelector = () => {
     );
   }
 
-  // Main render
-  return (
+  return (  
     <div className="seat-selector">
       <h1>Select Your Seats</h1>
       <h2>ATTENTION: Mr. and Ms. Psychology has been moved from January 25 to February 5, 2025.</h2>
@@ -277,39 +271,38 @@ const MovieSeatSelector = () => {
             ))}
           </ul>
         </div>
-        
       )}
+
       <div className="social-media">
-          <p>If you have any issues or concerns, you may reach us through our social media accounts.</p>
-          <div className="social-icons">
-            <a 
-              href="https://www.facebook.com/OLFUpsychsoc/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="facebook"
-            >
-              <FaFacebook />
-            </a>
-            <a 
-              href="https://www.instagram.com/psychsoc_olfuqc/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="instagram"
-            >
-              <FaInstagram />
-            </a>
-            <a 
-              href="https://twitter.com/PsychSoc_OLFUQC" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="twitter"
-            >
-              <FaTwitter />
-            </a>
-          </div>
+        <p>If you have any issues or concerns, you may reach us through our social media accounts.</p>
+        <div className="social-icons">
+          <a 
+            href="https://www.facebook.com/OLFUpsychsoc/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="facebook"
+          >
+            <FaFacebook />
+          </a>
+          <a 
+            href="https://www.instagram.com/psychsoc_olfuqc/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="instagram"
+          >
+            <FaInstagram />
+          </a>
+          <a 
+            href="https://twitter.com/PsychSoc_OLFUQC" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="twitter"
+          >
+            <FaTwitter />
+          </a>
         </div>
+      </div>
     </div>
-    
   );
 };
 
