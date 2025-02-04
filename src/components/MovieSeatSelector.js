@@ -22,7 +22,7 @@ const MovieSeatSelector = () => {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const maxSeats = 15;
+  const maxSeats = 200;
   const seatPrice = 50;
 
   const totalPrice = selectedSeats.length * seatPrice;
